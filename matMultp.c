@@ -4,6 +4,7 @@
 #include "matrix.h"
 #include <sys/time.h>
 
+// used to identify threads
 typedef struct element_index{
     int i;
     int j;
@@ -108,8 +109,9 @@ int thread_per_element(){
     gettimeofday(&start, NULL); //start checking time
     
 
-    for (int i = 0; i < a.n; i++){
-        for (int j = 0;j < b.m;j++){
+    for (int i = 0; i < c.n; i++){
+        for (int j = 0;j < c.m;j++){
+            // thread for each element in c
             indices[i][j].i = i;
             indices[i][j].j = j;
 
@@ -117,8 +119,8 @@ int thread_per_element(){
         }
     }
 
-    for (int i = 0; i < a.n; i++)
-        for (int j = 0;j < b.m;j++)
+    for (int i = 0; i < c.n; i++)
+        for (int j = 0;j < c.m;j++)
             pthread_join(threads[i][j], NULL);
 
 
@@ -153,12 +155,11 @@ int main(int argc, char **argv)
     }
 
     if (!init_matrix(&a, a_filename) || !init_matrix(&b, b_filename))  // read matrix from filename
-        clean_up();
+        clean_up(); // if an error occured, clean up by deallocating matrix data (exits automatically)
 
     if (a.m != b.n){
         printf("Invaild Dimensions. Cannot multiply \n");
         clean_up();
-        return 1; // operation not permitted
     }
 
     // set up c
