@@ -169,15 +169,15 @@ int main(int argc, char **argv)
 
 
     int t_one_thread = one_thread();
-    printf("One thread: %d\n", t_one_thread);
+    printf("One thread:\n\ttime = %d ms\n\tNumber of threads = 1\n\n", t_one_thread);
     
 
     
     int t_per_row = thread_per_row();
-    printf("Thread per row: %d\n", t_per_row);
+    printf("Thread per row:\n\ttime = %d ms\n\tNumber of threads = %d\n\n", t_per_row, a.n);
 
     int t_per_element = thread_per_element();
-    printf("Thread per element: %d\n", t_per_element);    
+    printf("Thread per element:\n\ttime = %d ms\n\tNumber of threads = %d\n\n", t_per_element, a.n * b.m);    
 
 
     //write matrix c to c_filename

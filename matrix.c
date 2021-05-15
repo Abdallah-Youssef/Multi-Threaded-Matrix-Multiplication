@@ -8,7 +8,12 @@
 // checks if string contains digits only
 bool isnumber(char* str){ 
     int len = strlen(str);
-    for (int i = 0;i < len;i++){
+
+    int i = 0;
+    if (str[0] == '-')
+        i++;
+
+    for (;i < len;i++){
         if (!isdigit(str[i]))
             return false;
     }
