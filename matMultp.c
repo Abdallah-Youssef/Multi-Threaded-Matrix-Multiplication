@@ -154,6 +154,7 @@ int main(int argc, char **argv)
         return 22; // invalid argument error code
     }
 
+
     if (!init_matrix(&a, a_filename) || !init_matrix(&b, b_filename))  // read matrix from filename
         clean_up(); // if an error occured, clean up by deallocating matrix data (exits automatically)
 
@@ -169,15 +170,15 @@ int main(int argc, char **argv)
 
 
     int t_one_thread = one_thread();
-    printf("One thread:\n\ttime = %d ms\n\tNumber of threads = 1\n\n", t_one_thread);
+    printf("One thread:\n\ttime = %d us\n\tNumber of threads = 1\n\n", t_one_thread);
     
 
     
     int t_per_row = thread_per_row();
-    printf("Thread per row:\n\ttime = %d ms\n\tNumber of threads = %d\n\n", t_per_row, a.n);
+    printf("Thread per row:\n\ttime = %d us\n\tNumber of threads = %d\n\n", t_per_row, a.n);
 
     int t_per_element = thread_per_element();
-    printf("Thread per element:\n\ttime = %d ms\n\tNumber of threads = %d\n\n", t_per_element, a.n * b.m);    
+    printf("Thread per element:\n\ttime = %d us\n\tNumber of threads = %d\n\n", t_per_element, a.n * b.m);    
 
 
     //write matrix c to c_filename

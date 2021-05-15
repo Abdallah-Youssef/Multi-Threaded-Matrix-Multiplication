@@ -12,8 +12,8 @@ def gen_mat(filename, n, m):
     f.close()
 
 
-l = random.randint(10, 20)
-n = random.randint(10, 20)
-m = random.randint(10, 20)
+l = random.randint(50, 100)
+n = random.randint(50, 100)
+m = random.randint(50, 100)
 gen_mat("a.txt", l, n)
 gen_mat("b.txt", n, m)
